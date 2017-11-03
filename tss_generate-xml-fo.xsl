@@ -11,7 +11,7 @@
 
     <!-- provides a variety of date functions, citation styles etc. -->
     <xsl:include href="/BachUni/programming/XML/Functions/BachFunctions%20v3.xsl"/>
-    
+
     <!-- collation parameter. decides whether pdfs are created for volumes, years of publication etc. Values: volume, year, issue  -->
     <xsl:param name="pgColl" select="'issue'"/>
     
@@ -143,7 +143,7 @@
         <xsl:param name="pRefs"/>
         <xsl:param name="pPubTitle"/>
         <xsl:param name="pFileName"/>
-        <xsl:result-document href="/BachUni/projekte/XML/Sente2Pdf/xslfo/{$pPubTitle}-{$pFileName}.fo">
+        <xsl:result-document href="../xslfo/{$pPubTitle}-{$pFileName}.fo">
             <fo:root>
                 <fo:layout-master-set>
                     <fo:simple-page-master master-name="A4" page-height="297mm" page-width="210mm">
