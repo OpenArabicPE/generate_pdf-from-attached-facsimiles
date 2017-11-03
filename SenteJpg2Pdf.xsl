@@ -5,39 +5,39 @@
     xmlns="http://www.thirdstreetsoftware.com/SenteXML-1.0">
     <xsl:output method="xml" encoding="UTF-8" indent="yes" omit-xml-declaration="no"/>
     
-    <xsl:include href="/BachUni/projekte/XML/Functions/BachFunctions v3.xsl"/> 
+    <xsl:include href="/BachUni/programming/XML/Functions/BachFunctions%20v3.xsl"/> 
     
-    <!-- this stylesheet takes a SenteXML as inpute with JPGs attached to individual references and produces an additional URL to the PDF -->
+    <!-- this stylesheet takes a SenteXML as input with JPGs attached to individual references and produces an additional URL to the PDF -->
     <!-- the stylesheet also adds Hijri dates, as it assumes that it will mostly deal with Arabic periodicals from the late 19th and early 20th centuries, which most likely had a Hijri publication date -->
     
     <xsl:variable name="vgUrlPdf" select="'file:///BachUni/projekte/XML/Sente2Pdf/pdfs/Servet'"/>
+    
+    <!-- identity transformation -->
+    <xsl:template match="@* | node()">
+        <xsl:copy>
+            <xsl:apply-templates select="@* | node()"/>
+        </xsl:copy>
+    </xsl:template>
+    <!-- add link to PDF -->
+    <xsl:template match="tss:attachments">
+        <xsl:copy>
+            <xsl:element name="tss:attachmentReference">
+                <xsl:element name="name">PDF</xsl:element>
+                <xsl:element name="URL">
+                    <xsl:variable name="vVolume"
+                        select="concat('vol-',ancestor-or-self::tss:reference//tss:characteristic[@name='volume'])"/>
+                    <xsl:variable name="vIssue"
+                        select="concat('no-',ancestor-or-self::tss:reference//tss:characteristic[@name='issue'])"/>
+                    <xsl:variable name="vUUID"
+                        select="ancestor-or-self::tss:reference//tss:characteristic[@name='UUID']"/>
+                    <xsl:value-of select="concat($vgUrlPdf,'-',$vVolume,'_',$vIssue,'_',$vUUID,'.pdf')"/>
+                </xsl:element>
+            </xsl:element>
+            <xsl:apply-templates/>
+        </xsl:copy>
+    </xsl:template>
 
-    <!--<xsl:template match="tss:senteContainer">
-        <xsl:element name="tss:senteContainer">
-            <xsl:apply-templates/>
-        </xsl:element>
-    </xsl:template>
-    <xsl:template match="tss:library">
-        <xsl:element name="tss:library">
-            <xsl:apply-templates/>
-        </xsl:element>
-    </xsl:template>
-    <xsl:template match="tss:references">
-        <xsl:element name="tss:references">
-            <xsl:apply-templates/>
-        </xsl:element>
-    </xsl:template>
-    <xsl:template match="tss:reference">
-        <xsl:element name="tss:reference">
-            <xsl:apply-templates/>
-        </xsl:element>
-    </xsl:template>
-    <xsl:template match="tss:publicationType">
-        <xsl:copy-of select="."/>
-    </xsl:template>
-    <xsl:template match="tss:dates">
-        <xsl:copy-of select="."/>
-    </xsl:template>
+    <!--
     <xsl:template match="tss:characteristics">
         <xsl:element name="tss:characteristics">
             <xsl:apply-templates/>
@@ -65,47 +65,12 @@
 -\->
         </xsl:element>
     </xsl:template>
-    <xsl:template match="tss:characteristic">
-        <xsl:copy-of select="."/>
-    </xsl:template>
-    <xsl:template match="tss:keywords">
-        <xsl:copy-of select="."/>
-    </xsl:template>
-    <xsl:template match="tss:notes">
-        <xsl:copy-of select="."/>
-    </xsl:template>
     <xsl:template match="tss:attachmentReference">
         <xsl:if test="ends-with(./URL,'.pdf')">
             <xsl:copy-of select="."/>
         </xsl:if>
         <!-\- <xsl:copy-of select="."/> -\->
     </xsl:template>-->
-    
-    <xsl:template match="@* | node()">
-        <xsl:copy>
-            <xsl:apply-templates select="@* | node()"/>
-        </xsl:copy>
-    </xsl:template>
-    <xsl:template match="tss:attachments">
-        <!-- problem: pubTitles can contain all sorts of illegal characters -->
-        <!--<xsl:variable name="vPubTitle" select="replace(ancestor::tss:reference/tss:characteristics/tss:characteristic[@name='publicationTitle'],' ','-')"/>-->
-        <xsl:element name="tss:attachments">
-            <xsl:element name="tss:attachmentReference">
-                <xsl:element name="name">PDF</xsl:element>
-                <xsl:element name="URL">
-                    <xsl:variable name="vVolume"
-                        select="concat('vol-',ancestor-or-self::tss:reference//tss:characteristic[@name='volume'])"/>
-                    <xsl:variable name="vIssue"
-                        select="concat('no-',ancestor-or-self::tss:reference//tss:characteristic[@name='issue'])"/>
-                    <xsl:variable name="vUUID"
-                        select="ancestor-or-self::tss:reference//tss:characteristic[@name='UUID']"/>
-                    <!--<xsl:value-of select="concat($vgUrlPdf,$vVolume,'_',$vIssue,'_',$vUUID,'.pdf')"/>-->
-                    <xsl:value-of select="concat($vgUrlPdf,'-',$vVolume,'_',$vIssue,'_',$vUUID,'.pdf')"/>
-                </xsl:element>
-            </xsl:element>
-            <!--<xsl:apply-templates/>-->
-        </xsl:element>
-    </xsl:template>
     
 
 </xsl:stylesheet>
