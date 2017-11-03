@@ -42,14 +42,14 @@
                     </xsl:for-each-group>
                 </xsl:when>
                 <xsl:when test="$pgColl='volume'">
-                    <xsl:for-each-group select="./tss:reference" group-by=".//tss:characteristic[@name='issue']">
+                    <xsl:for-each-group select="./tss:reference" group-by=".//tss:characteristic[@name='issue'][.=13]">
                         <xsl:sort select="ancestor::tss:date[@type='Publication']/@year"/>
                         <xsl:sort select="ancestor::tss:date[@type='Publication']/@month"/>
                         <xsl:sort select="ancestor::tss:date[@type='Publication']/@day"/>
                         <xsl:variable name="vRefs">
                             <xsl:copy-of select="current-group()"/>
                         </xsl:variable>
-                        <xsl:result-document href="FO vol-{current-grouping-key()}.xml">
+                        <!-- <xsl:result-document href="FO vol-{current-grouping-key()}.xml"> -->
                             <fo:root>
                                 <fo:layout-master-set>
                                     <fo:simple-page-master master-name="A4">
@@ -63,7 +63,7 @@
                                     <xsl:apply-templates select=".//tss:attachmentReference" mode="mPDF"/>
                                 </xsl:for-each>
                             </fo:root>
-                        </xsl:result-document>
+                        <!-- </xsl:result-document> -->
                     </xsl:for-each-group>
                 </xsl:when>
             </xsl:choose>
