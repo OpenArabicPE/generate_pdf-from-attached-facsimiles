@@ -11,7 +11,7 @@
     <xsl:include href="/BachUni/programming/XML/Functions/BachFunctions%20v3.xsl"/>
     
     <xsl:template name="t_generate-fo-file">
-        <xsl:param name="pRefs"/>
+        <xsl:param name="p_references"/>
         <xsl:param name="pPubTitle"/>
         <xsl:param name="pFileName"/>
         <xsl:result-document href="../xslfo/{$pPubTitle}-{$pFileName}.fo">
@@ -24,10 +24,10 @@
                 <!-- generate bookmarks pointing to the first page of an issue -->
                 <!-- oxygen doesn't validate with a fo:bookmarktree. this is a known bug -->
                 <fo:bookmark-tree>
-                    <xsl:apply-templates select="$pRefs/tss:reference[descendant::tss:attachmentReference]" mode="m_bookmark"/>
+                    <xsl:apply-templates select="$p_references/tss:reference[descendant::tss:attachmentReference]" mode="m_bookmark"/>
                 </fo:bookmark-tree>
                 <!-- add the actual pages -->
-                <xsl:apply-templates select="$pRefs/tss:reference" mode="m_page-sequence"/>
+                <xsl:apply-templates select="$p_references/tss:reference" mode="m_page-sequence"/>
             </fo:root>
         </xsl:result-document>
     </xsl:template>
