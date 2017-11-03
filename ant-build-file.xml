@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- this ant build file uses input from fo files in a xslfo directory and produces pdfs from each fo file -->
+<project basedir="." default="generate-multiple-pdf" name="ANTProject">
+ <property name="fop.home" value="/BachUni/projekte/XML/Functions/fop-1.1"/>
+
+ <taskdef name="fop" classname="org.apache.fop.tools.anttasks.Fop">
+  <classpath>
+   <fileset dir="${fop.home}/lib">
+    <include name="*.jar"/>
+   </fileset>
+   <fileset dir="${fop.home}/build">
+    <include name="fop.jar"/>
+    <include name="fop-hyph.jar"/>
+   </fileset>
+  </classpath>
+ </taskdef>
+ 
+ <target name="generate-pdf" description="Generates a single PDF file">
+  <fop format="application/pdf" fofile="/BachUni/projekte/XML/Sente2Pdf/FO no-570.xml"
+   outfile="/BachUni/projekte/XML/Sente2Pdf/FO no-570.pdf"/>
+ </target>
+ 
+ <!-- this action generates pdfs from a set of xslfo files -->
+ <target name="generate-multiple-pdf" description="Generates multiple PDF files">
+  <!-- specifies the output location for the  PDFs-->
+    <fop format="application/pdf" outdir="/BachUni/projekte/XML/Sente2Pdf/pdfs" messagelevel="debug">
+  <!-- specifies the input folder containing the xslfo files -->
+    <fileset dir="/BachUni/projekte/XML/Sente2Pdf/xslfo">
+    <include name="*.fo"/>
+   </fileset>
+  </fop>
+ </target>
+</project>

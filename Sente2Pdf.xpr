@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="16.1">
+    <meta>
+        <filters directoryPatterns="" filePatterns="" positiveFilePatterns="" showHiddenFiles="false"/>
+        <options>
+            <serialized version="16.1" xml:space="preserve">
+                <map>
+                    <entry>
+                        <String>enable.project.master.files.support</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                </map>
+            </serialized>
+        </options>
+    </meta>
+    <projectTree name="Sente2Pdf.xpr">
+        <file name="ant-build-file.xml"/>
+        <file name="Sente2Pdf%20attachments%20v1c.xsl"/>
+        <file name="SenteJpg2Pdf.xsl"/>
+    </projectTree>
+</project>
