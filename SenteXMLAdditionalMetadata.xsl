@@ -6,7 +6,7 @@
     version="2.0">
     <xsl:output method="xml" encoding="UTF-8" indent="yes" omit-xml-declaration="no"/>
     
-    <xsl:include href="/BachUni/projekte/XML/Functions/BachFunctions v3.xsl"/>
+    <xsl:include href="/BachUni/programming/XML/Functions/BachFunctions%20v3.xsl"/>
     
     <!-- this stylesheet unites two or more Sente XML files and matches the references through their UUID. At the moment it is used to provide both jpg and pdf attachments -->
     
