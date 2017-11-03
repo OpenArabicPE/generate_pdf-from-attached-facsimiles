@@ -10,7 +10,7 @@
     <!-- this stylesheet uses Sente XML intput and produces XML-FO for output of images attached to references as PDF -->
     
     <!-- provides a variety of date functions, citation styles etc. -->
-    <xsl:include href="/BachUni/projekte/XML/Functions/BachFunctions v2b.xsl"/>
+    <xsl:include href="/BachUni/programming/XML/Functions/BachFunctions%20v3.xsl"/>
     
     <!-- collation parameter. decides whether pdfs are created for volumes, years of publication etc. Values: volume, year, issue  -->
     <xsl:param name="pgColl" select="'volume'"/>
@@ -97,7 +97,7 @@
                                 <xsl:attribute name="internal-destination" select="concat('i',.//tss:characteristic[@name='volume'],'-1')"/>
                                 <fo:bookmark-title>
                                     <xsl:value-of select="concat(.//tss:characteristic[@name='volume'],', ',.//tss:date[@type='Publication']/@day,' ')"/>
-                                    <xsl:call-template name="funcDateMonthName-Num">
+                                    <xsl:call-template name="funcDateMonthNameNumber">
                                         <xsl:with-param name="pMonth" select=".//tss:date[@type='Publication']/@month"/>
                                         <xsl:with-param name="pLang" select="'GEn'"/>
                                     </xsl:call-template>
