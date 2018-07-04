@@ -6,7 +6,7 @@
     xmlns="http://www.w3.org/1999/XSL/Format" version="2.0">
     <xsl:output method="xml" encoding="UTF-8" indent="yes" omit-xml-declaration="no"/>
     
-    <!-- this stylesheet generates XML FO which can then be used to create PDFs using an ANT build file -->
+    <!-- this stylesheet generates XSL FO which can then be used to create PDFs using an ANT build file -->
     
     <!-- provides a variety of date functions, citation styles etc. -->
 <!--    <xsl:include href="/BachUni/programming/XML/Functions/BachFunctions%20v3.xsl"/>-->
