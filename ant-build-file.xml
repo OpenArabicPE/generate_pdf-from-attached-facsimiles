@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- this ant build file uses input from fo files in a xslfo directory and produces pdfs from each fo file -->
 <project basedir="." default="generate-multiple-pdf" name="ANTProject">
- <property name="fop.home" value="/BachUni/programming/XML/Functions/fop-1.1"/>
+    <property name="fop.home" value="/BachUni/programming/XML/Functions/fop-1.1"/>
 
- <taskdef name="fop" classname="org.apache.fop.tools.anttasks.Fop">
-  <classpath>
-   <fileset dir="${fop.home}/lib">
-    <include name="*.jar"/>
-   </fileset>
-   <fileset dir="${fop.home}/build">
-    <include name="fop.jar"/>
-    <include name="fop-hyph.jar"/>
-   </fileset>
-  </classpath>
- </taskdef>
- 
- <target name="generate-pdf" description="Generates a single PDF file">
-  <fop format="application/pdf" fofile="path-to-input-file/file.fo"
-   outfile="path-to-output-file/file.pdf"/>
- </target>
- 
- <!-- this action generates pdfs from a set of xslfo files -->
- <target name="generate-multiple-pdf" description="Generates multiple PDF files">
-  <!-- specifies the output location for the  PDFs-->
-    <fop format="application/pdf" outdir="path-to-output-folder" messagelevel="debug">
-  <!-- specifies the input folder containing the xslfo files -->
-        <fileset dir="path-to-input-folder">
-    <include name="*.fo"/>
-   </fileset>
-  </fop>
- </target>
+    <taskdef name="fop" classname="org.apache.fop.tools.anttasks.Fop">
+        <classpath>
+            <fileset dir="${fop.home}/lib">
+                <include name="*.jar"/>
+            </fileset>
+            <fileset dir="${fop.home}/build">
+                <include name="fop.jar"/>
+                <include name="fop-hyph.jar"/>
+            </fileset>
+        </classpath>
+    </taskdef>
+
+    <!-- this action generates transforms a single XSL-FO file -->
+    <target name="generate-pdf" description="Generates a single PDF file">
+        <fop format="application/pdf" fofile="path-to-input-file/file.fo"
+            outfile="path-to-output-file/file.pdf"/>
+    </target>
+
+    <!-- this action generates pdfs from a set of xslfo files -->
+    <target name="generate-multiple-pdf" description="Generates multiple PDF files">
+        <!-- specifies the output location for the  PDFs-->
+        <fop format="application/pdf" outdir="path-to-output-folder" messagelevel="debug">
+            <!-- specifies the input folder containing the xslfo files -->
+            <fileset dir="path-to-input-folder">
+                <include name="*.fo"/>
+            </fileset>
+        </fop>
+    </target>
 </project>
