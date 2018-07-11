@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="16.1">
+<project version="19.1">
     <meta>
         <filters directoryPatterns="" filePatterns="" positiveFilePatterns="" showHiddenFiles="false"/>
         <options>
-            <serialized version="16.1" xml:space="preserve">
-                <map>
+            <serialized version="19.1" xml:space="preserve">
+                <serializableOrderedMap>
                     <entry>
                         <String>enable.project.master.files.support</String>
                         <Boolean>true</Boolean>
                     </entry>
-                </map>
+                </serializableOrderedMap>
             </serialized>
         </options>
     </meta>
-    <projectTree name="Sente2Pdf.xpr">
+    <projectTree name="generate_pdf-from-attached-facsimiles.xpr">
+        <folder path="xslt/"/>
         <file name="ant-build-file.xml"/>
-        <file name="Sente2Pdf%20attachments%20v1c.xsl"/>
-        <file name="SenteJpg2Pdf.xsl"/>
     </projectTree>
 </project>
