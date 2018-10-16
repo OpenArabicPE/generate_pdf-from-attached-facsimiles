@@ -46,7 +46,14 @@
             <xsl:value-of select="tei:monogr/tei:biblScope[@unit='issue']/@from"/>
             <!-- date -->
             <xsl:text>, </xsl:text>
-            <xsl:value-of select="format-date(tei:monogr/tei:imprint/tei:date[1]/@when,'[D1] [MNn] [Y0001]')"/>
+            <xsl:choose>
+                <xsl:when test="string-length(tei:monogr/tei:imprint/tei:date[1]/@when)=10">
+                    <xsl:value-of select="format-date(tei:monogr/tei:imprint/tei:date[1]/@when,'[D1] [MNn] [Y0001]')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="tei:monogr/tei:imprint/tei:date[1]/@when"/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:param>
         <fo:bookmark starting-state="show">
             <xsl:attribute name="internal-destination" select="$p_destination"/>
