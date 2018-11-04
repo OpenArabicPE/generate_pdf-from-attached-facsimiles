@@ -213,6 +213,7 @@
         </options>
     </meta>
     <projectTree name="generate_pdf-from-attached-facsimiles.xpr">
+        <folder path="../../OpenArabicPE/digital-mawaqif/"/>
         <folder path="xslt/"/>
         <file name="ant-build-file.xml"/>
     </projectTree>
