@@ -39,8 +39,8 @@
                     </xsl:variable>
                     <xsl:variable name="vFileName" select="current-grouping-key()"/>
                     <xsl:call-template name="t_generate-fo-file">
-                        <xsl:with-param name="pRefs" select="$vRefs"/>
-                        <xsl:with-param name="pFileName" select="$vFileName"/>
+                        <xsl:with-param name="p_references" select="$vRefs"/>
+                        <xsl:with-param name="p_file-name" select="$vFileName"/>
                     </xsl:call-template>
                 </xsl:for-each-group>
             </xsl:when>
@@ -86,9 +86,9 @@
                         </xsl:choose>
                     </xsl:variable>
                     <xsl:call-template name="t_generate-fo-file">
-                        <xsl:with-param name="pRefs" select="$vRefs"/>
-                        <xsl:with-param name="pPubTitle" select="$vPubTitle"/>
-                        <xsl:with-param name="pFileName" select="$vFileName"/>
+                        <xsl:with-param name="p_references" select="$vRefs"/>
+<!--                        <xsl:with-param name="pPubTitle" select="$vPubTitle"/>-->
+                        <xsl:with-param name="p_file-name" select="$vFileName"/>
                     </xsl:call-template>
                 </xsl:for-each-group>
             </xsl:when>
@@ -122,9 +122,9 @@
                     <xsl:variable name="vUUID" select=".//tss:characteristic[@name='UUID']"/>
                     <xsl:variable name="vFileName" select="concat('vol-',.//tss:characteristic[@name='volume'],'_no-',$vIssue,'_',$vUUID)"/>
                     <xsl:call-template name="t_generate-fo-file">
-                        <xsl:with-param name="pRefs" select="$vRefs"/>
-                        <xsl:with-param name="pPubTitle" select="$pgPubTitle"/>
-                        <xsl:with-param name="pFileName" select="$vFileName"/>
+                        <xsl:with-param name="p_references" select="$vRefs"/>
+<!--                        <xsl:with-param name="pPubTitle" select="$pgPubTitle"/>-->
+                        <xsl:with-param name="p_file-name" select="$vFileName"/>
                     </xsl:call-template>
                 </xsl:for-each>
             </xsl:when>
