@@ -214,6 +214,7 @@
     </meta>
     <projectTree name="generate_pdf-from-attached-facsimiles.xpr">
         <folder path="../../OpenArabicPE/digital-mawaqif/"/>
+        <folder path="../../OpenArabicPE/newspaper_al-asr-al-jadid/"/>
         <folder path="xslt/"/>
         <file name="ant-build-file.xml"/>
     </projectTree>
